@@ -71,6 +71,7 @@ class King:
         for card in cards:
             if type(card) == Countess:
                 return False
+        return True
 
 class Countess:
 

@@ -45,8 +45,11 @@ while True:
 
                 # Turno da maquina
                 maquina.add_card(jogo.draw_card())
-                # TODO melhorar a carta que a máquina escolhe
-                maquina.use_card(random.randrange(0, len(maquina.cartas)))
+                while len(maquina.cartas) > 1:
+                    try:
+                        maquina.use_card(random.randrange(0, len(maquina.cartas)))
+                    except:
+                        continue
 
 
     screen.fill((255, 255, 255))
