@@ -39,5 +39,8 @@ class Game:
         raise Exception("Não há mais cartas no monte")
 
     def compare_hands(self, *players):
-        # TODO comparar mãos finais
-        pass
+        vencedor = players[0]
+        for player in players:
+            if player.cartas[0].valor > vencedor.cartas[0].valor:
+                vencedor = player
+        return vencedor

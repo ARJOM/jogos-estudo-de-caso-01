@@ -1,8 +1,12 @@
 class Player:
 
-    def __init__(self):
+    def __init__(self, nome=""):
+        self.nome = nome
         self.cartas = []
         self.mesa = []
+
+    def __str__(self):
+        return self.nome
 
     def use_card(self, card_index):
         carta = self.cartas[card_index]

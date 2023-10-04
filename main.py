@@ -18,8 +18,8 @@ pygame.display.set_caption("Love Letter")
 
 jogo = Game()
 
-maquina = Player()
-player1 = Player()
+maquina = Player("Computador")
+player1 = Player("Jogador 1")
 
 maquina.add_card(jogo.draw_card())
 player1.add_card(jogo.draw_card())
@@ -55,7 +55,14 @@ while True:
     screen.fill((255, 255, 255))
 
     if len(player1.cartas) == 1:
-        player1.add_card(jogo.draw_card())
+        try:
+            player1.add_card(jogo.draw_card())
+        except:
+            winner = jogo.compare_hands(player1, maquina)
+            text = font.render(f"{winner.nome} venceu", True, green, blue)
+            textRect = text.get_rect()
+            screen.blit(text, textRect)
+
 
     # Desenha quantas cartas faltam
     pygame.draw.rect(screen, (94, 33, 41), Rect((295, 200), (50, 80)))
